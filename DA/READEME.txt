@@ -1,0 +1,16 @@
+O programa funciona da seguinte forma:
+
+1. Compila-se o arquivo main.cpp como de costume, com por exemplo o seguinte comando:
+
+    g++ main.cpp -o run
+
+2. Gerado o executável "run", este é acompanhado de 3 argumentos. O primeiro sendo o cenário a ser executado, o segundo sendo o arquivo de carrinhas a ser lido e o terceiro o arquivo de encomendas a ser lido:
+
+    ./run 1 carrinhas.txt encomendas.txt
+
+3. O resultado é gerado. Para este caso:
+
+    Etafetas: 24
+    Pedidos: 450
+
+Obs: os arquivos "carrinhas.txt" e "encomendas.txt" contêm o dataset proposto no Moodle. Suas variações de arquivo são versões reduzidas do mesmo.
