@@ -1,4 +1,4 @@
-#include "header.h" //Header com a definição da estruturas CARRINHA e ENCOMENDA, bem como das funções secundárias
+#include "header2.h" //Header com a definição da estruturas CARRINHA e ENCOMENDA, bem como das funções secundárias
 
 int main(int argc, char *argv[]) {
 
@@ -94,39 +94,39 @@ int main(int argc, char *argv[]) {
                 break;
             }
 
-            //Avaliar se a carrinha tem mais volume ou peso
-            if ((*itrcar).volMax >= (*itrcar).pesoMax) {
-                //Avaliar se a carrinha consegue aceitar a encomendar de menor peso
-                if (!aceitaEncomendas(itrcar, pesos, itrpes, estado, pedidos)) {
-                    //Avaliar se a carrinhas consegue aceitar a encomenda de menor volume caso, não consiga a de menor peso
-                    if (!aceitaEncomendas(itrcar, volumes, itrvol, estado, pedidos)) {
-                        itrcar++;
-                        //Caso ainda haja carrinhas, passar o pedido para o próximo
-                        if (itrcar != carrinhas.end()) estafetas++;
-                        itrcar--;
-                    }
-                }
-            }
-            else {
-                //Avaliar se a carrinha consegue aceitar a encomendar de menor volume
-                if (!aceitaEncomendas(itrcar, volumes, itrvol, estado, pedidos)) {
-                    //Avaliar se a carrinhas consegue aceitar a encomenda de menor volume caso, não consiga a de menor peso
+                //Avaliar se a carrinha tem mais volume ou peso
+                if ((*itrcar).volMax >= (*itrcar).pesoMax) {
+                    //Avaliar se a carrinha consegue aceitar a encomendar de menor peso
                     if (!aceitaEncomendas(itrcar, pesos, itrpes, estado, pedidos)) {
-                        itrcar++;
-                        //Caso ainda haja carrinhas, passar o pedido para o próximo
-                        if (itrcar != carrinhas.end()) estafetas++;
-                        itrcar--;
+                        //Avaliar se a carrinhas consegue aceitar a encomenda de menor volume caso, não consiga a de menor peso
+                        if (!aceitaEncomendas(itrcar, volumes, itrvol, estado, pedidos)) {
+                            itrcar++;
+                            //Caso ainda haja carrinhas, passar o pedido para o próximo
+                            if (itrcar != carrinhas.end()) estafetas++;
+                            itrcar--;
+                        }
                     }
                 }
-            }
-            //Atualizar o iterador do vetor-prioridade dos pesos até que apareça uma encomenda que não foi aceite
-            while (itrpes != pesos.end() && estado[(*itrpes).cod] == 1){
-                itrpes++;
-            }
-            //Atualizar o iterador do vetor-prioridade dos pesos até que apareça uma encomenda que não foi aceite
-            while (itrvol != volumes.end() && estado[(*itrvol).cod] == 1){
-                itrvol++;
-            }
+                else {
+                    //Avaliar se a carrinha consegue aceitar a encomendar de menor volume
+                    if (!aceitaEncomendas(itrcar, volumes, itrvol, estado, pedidos)) {
+                        //Avaliar se a carrinhas consegue aceitar a encomenda de menor volume caso, não consiga a de menor peso
+                        if (!aceitaEncomendas(itrcar, pesos, itrpes, estado, pedidos)) {
+                            itrcar++;
+                            //Caso ainda haja carrinhas, passar o pedido para o próximo
+                            if (itrcar != carrinhas.end()) estafetas++;
+                            itrcar--;
+                        }
+                    }
+                }
+                //Atualizar o iterador do vetor-prioridade dos pesos até que apareça uma encomenda que não foi aceite
+                while (itrpes != pesos.end() && estado[(*itrpes).cod] == 1){
+                    itrpes++;
+                }
+                //Atualizar o iterador do vetor-prioridade dos pesos até que apareça uma encomenda que não foi aceite
+                while (itrvol != volumes.end() && estado[(*itrvol).cod] == 1){
+                    itrvol++;
+                }
         }
         //Gerar os resultados
         if (pedidos == 0) estafetas = 0;
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
 
             if (aceitaEncomendas2(itrcar, rentaveis, itrren, estado, pedidos, receitadiaria)) {}
 
-                //Avaliar se a carrinha tem mais volume ou peso
+            //Avaliar se a carrinha tem mais volume ou peso
             else if ((*itrcar).volMax >= (*itrcar).pesoMax) {
                 //Avaliar se a carrinha consegue AINDA aceitar a encomendar de menor peso
                 if (!aceitaEncomendas2(itrcar, pesos, itrpes, estado, pedidos, receitadiaria)) {
